@@ -3,8 +3,6 @@ package com.googledevelopersgroup.androidworkshop_userinput_userinterface.Charac
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-import com.googledevelopersgroup.androidworkshop_userinput_userinterface.CharacterMovement;
-
 public class MainCharacter implements GameCharacter {
     private Bitmap bitmap;
     private int x,y;

@@ -1,15 +1,12 @@
 package com.googledevelopersgroup.androidworkshop_userinput_userinterface.Character;
 
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
-
-import com.googledevelopersgroup.androidworkshop_userinput_userinterface.CharacterMovement;
 
 /**
  * Represents the super class that the characters of the game are going  to use in order to be inserted in the dame
  */
-interface GameCharacter {
+public interface GameCharacter {
     int SCREEN_WIDTH = Resources.getSystem().getDisplayMetrics().widthPixels;
     int SCREEN_HEIGHT = Resources.getSystem().getDisplayMetrics().heightPixels;
 

@@ -1,4 +1,4 @@
-package com.googledevelopersgroup.androidworkshop_userinput_userinterface;
+package com.googledevelopersgroup.androidworkshop_userinput_userinterface.Character;
 
 /**
  * Represents the possible movements of the character.
