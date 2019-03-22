@@ -1,7 +1,10 @@
-package com.googledevelopersgroup.androidworkshop_userinput_userinterface;
+package com.googledevelopersgroup.androidworkshop_userinput_userinterface.Character;
 
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+
+import com.googledevelopersgroup.androidworkshop_userinput_userinterface.CharacterMovement;
 
 /**
  * Represents the super class that the characters of the game are going  to use in order to be inserted in the dame
@@ -9,7 +12,14 @@ import android.graphics.Canvas;
 abstract class GameCharacter {
     private Bitmap bitmap; // the image of the character.
     private int x, y; // the coordinates of the character
-    private int xVelocity;
+    private int xVelocity, yVelocity;
+    private int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+    private int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
+
+    {
+        xVelocity = 10;
+        yVelocity = 10;
+    }
 
     public GameCharacter(Bitmap bitmap, int x, int y){
         this.bitmap = bitmap;
@@ -36,10 +46,23 @@ abstract class GameCharacter {
     public void update(CharacterMovement movement){
         switch(movement){
             case RIGHT:
-                x += xVelocity;
+                if(x < screenWidth){//collision with the screen
+                    x += xVelocity;
+                }
             case LEFT:
-                x -= xVelocity;
+                if(x > 0){//collision with the screen
+                    x -= xVelocity;
+                }
+
         }
+    }
+
+    public void setxVelocity(int xVelocity) {
+        this.xVelocity = xVelocity;
+    }
+
+    public void setyVelocity(int yVelocity) {
+        this.yVelocity = yVelocity;
     }
 }
 
