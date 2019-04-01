@@ -35,16 +35,6 @@ public class MainCharacter implements View.OnTouchListener, GameCharacter {
     }
 
     @Override
-    public void setxVelocity(int xVelocity) {
-        this.xVelocity = xVelocity;
-    }
-
-    @Override
-    public void setyVelocity(int yVelocity) {
-        this.yVelocity = yVelocity;
-    }
-
-    @Override
     public boolean onTouch(View v, MotionEvent event) {
         this.x = ((int)event.getX());
         return false;
