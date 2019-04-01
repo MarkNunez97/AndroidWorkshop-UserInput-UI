@@ -5,9 +5,9 @@ import android.graphics.Canvas;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class MainCharacter implements View.OnTouchListener, GameCharacter {
+public class MainCharacter implements  GameCharacter {
     private Bitmap bitmap;
-    private int x,y;
+    private int x, y;
     private int xVelocity, yVelocity;
 
     public MainCharacter(Bitmap bitmap, int x, int y) {
@@ -20,6 +20,7 @@ public class MainCharacter implements View.OnTouchListener, GameCharacter {
     public MainCharacter(Bitmap bitmap) {
         this(bitmap, 100, 100);
     }
+
     @Override
     public void draw(Canvas canvas) {
         canvas.drawBitmap(bitmap, x, y, null);
@@ -34,9 +35,5 @@ public class MainCharacter implements View.OnTouchListener, GameCharacter {
         this.x = x;
     }
 
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        this.x = ((int)event.getX());
-        return false;
-    }
 }
+
