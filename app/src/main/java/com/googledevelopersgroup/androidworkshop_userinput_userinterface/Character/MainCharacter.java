@@ -2,13 +2,16 @@ package com.googledevelopersgroup.androidworkshop_userinput_userinterface.Charac
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class MainCharacter implements GameCharacter {
+public class MainCharacter implements View.OnTouchListener, GameCharacter {
     private Bitmap bitmap;
     private int x,y;
     private int xVelocity, yVelocity;
 
     public MainCharacter(Bitmap bitmap, int x, int y) {
+        this.xVelocity = 5;
         this.bitmap = bitmap;
         this.x = x;
         this.y = y;
@@ -23,18 +26,12 @@ public class MainCharacter implements GameCharacter {
     }
 
     @Override
-    public void update(CharacterMovement movement) {
-        switch(movement){
-            case RIGHT:
-                if(x < SCREEN_WIDTH){//collision with the screen
-                    x += xVelocity;
-                }
-            case LEFT:
-                if(x > 0){//collision with the screen
-                    x -= xVelocity;
-                }
+    public void update(int x, int y) {
+        this.x = x;
+    }
 
-        }
+    public void setX(int x) {
+        this.x = x;
     }
 
     @Override
@@ -45,5 +42,11 @@ public class MainCharacter implements GameCharacter {
     @Override
     public void setyVelocity(int yVelocity) {
         this.yVelocity = yVelocity;
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        this.x = ((int)event.getX());
+        return false;
     }
 }

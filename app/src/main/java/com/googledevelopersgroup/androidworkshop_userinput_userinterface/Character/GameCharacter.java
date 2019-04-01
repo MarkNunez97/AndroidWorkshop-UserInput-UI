@@ -18,11 +18,11 @@ public interface GameCharacter {
     void draw(Canvas canvas);
 
     /**
-     * Going to handle the events of the character, for example, the movements of the character in the canvas.
-     *
-     * @param movement - the movement of the character.
+     * Going to update the position of the character.
+     * @param x
+     * @param y
      */
-    void update(CharacterMovement movement);
+    void update(int x, int y);
 
     void setxVelocity(int xVelocity);
 

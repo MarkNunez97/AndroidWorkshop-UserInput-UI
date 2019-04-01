@@ -7,33 +7,32 @@ import android.view.SurfaceHolder;
  * Responsible for updating the game for the user.
  */
 public class GamingThread extends Thread {
-    private SurfaceHolder surfaceHolder;
+    private final SurfaceHolder surfaceHolder;
     private GameView gameView;
     private boolean running;
     public static Canvas canvas;
 
-    public GamingThread(SurfaceHolder surfaceHolder, GameView gameView) {
+    GamingThread(SurfaceHolder surfaceHolder, GameView gameView) {
         this.surfaceHolder = surfaceHolder;
         this.gameView = gameView;
     }
 
     @Override
     public void run() {
-        while(running){
+        while (running) {
             canvas = null;
-            try{
+
+            try {
                 canvas = this.surfaceHolder.lockCanvas();
-                synchronized (surfaceHolder){
+                synchronized(surfaceHolder) {
                     this.gameView.update();
                     this.gameView.draw(canvas);
                 }
-            }catch(Exception e){
-                e.printStackTrace();
-            }finally{
-                if(canvas != null){
-                    try{
-                       surfaceHolder.unlockCanvasAndPost(canvas);
-                    }catch(Exception e){
+            } catch (Exception ignored) {} finally {
+                if (canvas != null) {
+                    try {
+                        surfaceHolder.unlockCanvasAndPost(canvas);
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -41,7 +40,8 @@ public class GamingThread extends Thread {
         }
     }
 
-    public void setRunning(boolean running) {
+
+    void setRunning(boolean running) {
         this.running = running;
     }
 }
