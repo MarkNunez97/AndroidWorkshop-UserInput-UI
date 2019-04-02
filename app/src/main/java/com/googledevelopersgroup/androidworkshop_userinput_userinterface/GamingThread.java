@@ -1,7 +1,11 @@
 package com.googledevelopersgroup.androidworkshop_userinput_userinterface;
 
 import android.graphics.Canvas;
+import android.support.v4.util.Consumer;
 import android.view.SurfaceHolder;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Responsible for updating the game for the user.
@@ -9,12 +13,13 @@ import android.view.SurfaceHolder;
 public class GamingThread extends Thread {
     private final SurfaceHolder surfaceHolder;
     private GameView gameView;
+    private List<GameObserver> observers;
     private boolean running;
     public static Canvas canvas;
 
-    GamingThread(SurfaceHolder surfaceHolder, GameView gameView) {
+    GamingThread(SurfaceHolder surfaceHolder, GameObserver... observers) {
         this.surfaceHolder = surfaceHolder;
-        this.gameView = gameView;
+        this.observers.addAll(Arrays.asList(observers));
     }
 
     @Override
@@ -25,8 +30,10 @@ public class GamingThread extends Thread {
             try {
                 canvas = this.surfaceHolder.lockCanvas();
                 synchronized(surfaceHolder) {
-                    this.gameView.update();
-                    this.gameView.draw(canvas);
+                    for (GameObserver observer: observers) {
+                        observer.draw(canvas);
+                        observer.update();
+                    }
                 }
             } catch (Exception ignored) {} finally {
                 if (canvas != null) {

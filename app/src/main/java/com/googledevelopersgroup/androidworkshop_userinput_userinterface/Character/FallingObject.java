@@ -3,5 +3,9 @@ package com.googledevelopersgroup.androidworkshop_userinput_userinterface.Charac
 import android.graphics.Canvas;
 
 public interface FallingObject extends GameCharacter {
-    //TODO declare the attributes of the falling objects
+    void setyVelocity(int yVelocity);
+    void setFallingObjListener(FallingObjectListener listener);
+}
+interface FallingObjectListener{
+    void onDestroyed(FallingObject fallingObject);
 }

@@ -24,9 +24,5 @@ public interface GameCharacter {
      */
     void update(int x, int y);
 
-    void setxVelocity(int xVelocity);
-
-    void setyVelocity(int yVelocity);
-
 }
 
