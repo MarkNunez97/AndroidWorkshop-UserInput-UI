@@ -12,3 +12,4 @@
 /captures
 /.idea/
 .externalNativeBuild
+**/infer-out
