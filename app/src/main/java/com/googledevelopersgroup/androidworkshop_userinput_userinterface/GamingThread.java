@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.support.v4.util.Consumer;
 import android.view.SurfaceHolder;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class GamingThread extends Thread {
 
     GamingThread(SurfaceHolder surfaceHolder, GameObserver... observers) {
         this.surfaceHolder = surfaceHolder;
+        this.observers = new ArrayList<>();
         this.observers.addAll(Arrays.asList(observers));
     }
 
